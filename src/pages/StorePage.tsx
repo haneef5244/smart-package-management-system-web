@@ -6,10 +6,11 @@ import { getApiErrorMessage } from '../api/client';
 import { SIZES, type Size, type StoreResult } from '../api/types';
 import { useStorePackage } from '../hooks/usePackages';
 
-const sizeHint: Record<Size, string> = {
-  SMALL: 'Envelopes, small boxes',
-  MEDIUM: 'Shoeboxes, mid parcels',
-  LARGE: 'Large parcels',
+// Mock reference dimensions (W × H × D) so agents can judge which size fits.
+const sizeInfo: Record<Size, { dimensions: string; hint: string }> = {
+  SMALL: { dimensions: '35 × 30 × 10 cm', hint: 'Envelopes, small boxes' },
+  MEDIUM: { dimensions: '45 × 35 × 25 cm', hint: 'Shoeboxes, mid parcels' },
+  LARGE: { dimensions: '60 × 45 × 40 cm', hint: 'Large parcels' },
 };
 
 export function StorePage() {
@@ -58,7 +59,12 @@ export function StorePage() {
                   }`}
                 >
                   <SizeBadge size={s} />
-                  <span className="text-xs text-ink-500">{sizeHint[s]}</span>
+                  <span className="font-mono text-xs font-semibold text-ink-700">
+                    {sizeInfo[s].dimensions}
+                  </span>
+                  <span className="text-xs text-ink-500">
+                    {sizeInfo[s].hint}
+                  </span>
                 </button>
               );
             })}
