@@ -34,10 +34,13 @@ npm run dev               # http://localhost:5173
 
 ## Screens
 
-- **Dashboard** (`/`) — live grid of every locker with size + availability,
-  summary stats, and a control to provision new lockers.
-- **Store package** (`/store`) — delivery-agent view: pick a package size and
-  store it; shows the assigned locker and a copyable pickup code.
+- **Home** (`/`) — landing page where the user picks their role: Delivery Agent
+  (store), Customer (retrieve), or Admin (manage lockers).
+- **Dashboard** (`/dashboard`) — admin view: live grid of every locker with size +
+  availability, summary stats, and a control to provision new lockers.
+- **Store package** (`/store`) — delivery-agent view: pick a package size (each
+  size shows its mock dimensions) and store it; shows the assigned locker and a
+  copyable pickup code.
 - **Retrieve package** (`/retrieve`) — customer view: enter locker number +
   pickup code to open the locker; shows the storage duration and charge.
 
@@ -48,7 +51,7 @@ src/
   api/          axios client, typed request functions, shared types
   hooks/        TanStack Query hooks (useLockers, useStorePackage, ...)
   components/   Button, Card, SizeBadge, LockerCard, Layout
-  pages/        DashboardPage, StorePage, RetrievePage
+  pages/        HomePage, DashboardPage, StorePage, RetrievePage
   index.css     Tailwind v4 + brand theme (@theme tokens)
 ```
 
